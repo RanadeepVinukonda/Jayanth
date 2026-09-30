@@ -1,253 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jayanth Sai Marine Services</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Under Construction | Jayanth Sai Marine Services</title>
 
 <style>
     :root {
         --green: #82c341;
-        --blue: #0071bc;
-        --blue-lt: #65a9d6;
-        --ink: #17222b;
-        --muted: #5d6b76;
-        --line: #e3e8ec;
+        --deep:  #123f58;
+        --text:  #557485;
     }
 
-    @page { size: A4; margin: 0; }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-    * { box-sizing: border-box; }
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5fbff;
+    }
 
-    html, body { margin: 0; padding: 0; background: #e9e9e9; }
-
-    body { font-family: "Times New Roman", Times, serif; }
-
-    .page {
-        width: 210mm;
-        height: 297mm;
-        margin: 20px auto;
-        background: #fff;
+    .construction-page {
+        min-height: 100vh;
         position: relative;
         overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+
+        background:
+            linear-gradient(
+                to bottom,
+                #f5fbff 0%,
+                #e9f6fc 55%,
+                #c7e9f7 100%
+            );
     }
 
     /* =========================
-       HEADER
+       CLOUDS
        ========================= */
 
-    .header {
+    .cloud {
         position: absolute;
-        top: 9mm;
-        left: 15mm;
-        right: 15mm;
-        height: 31mm;
+        width: 130px;
+        height: 42px;
+        background: rgba(255,255,255,.85);
+        border-radius: 50px;
+        opacity: .8;
+        animation: cloudMove 35s linear infinite;
+    }
+
+    .cloud::before,
+    .cloud::after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    .cloud::before {
+        width: 55px;
+        height: 55px;
+        left: 20px;
+        bottom: 10px;
+    }
+
+    .cloud::after {
+        width: 70px;
+        height: 70px;
+        right: 18px;
+        bottom: 5px;
+    }
+
+    .cloud-1 {
+        top: 16%;
+        left: -180px;
+        animation-duration: 42s;
+    }
+
+    .cloud-2 {
+        top: 34%;
+        left: -250px;
+        transform: scale(.7);
+        animation-duration: 55s;
+        animation-delay: -20s;
+    }
+
+    .cloud-3 {
+        top: 10%;
+        left: -300px;
+        transform: scale(.5);
+        animation-duration: 65s;
+        animation-delay: -35s;
+    }
+
+    @keyframes cloudMove {
+        from { transform: translateX(0); }
+        to   { transform: translateX(calc(100vw + 500px)); }
+    }
+
+    /* =========================
+       BRAND
+       ========================= */
+
+    .brand {
+        position: relative;
+        z-index: 10;
+
         display: flex;
         align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+
+        padding: 28px 20px 0;
     }
 
     .logo {
-        width: 34mm;
-        height: 28mm;
+        width: 118px;
+        height: 94px;
         object-fit: contain;
-        flex: 0 0 34mm;
     }
 
-    .company-name {
-        margin-left: 1.5mm;
-        margin-top: -1mm;
+    .brand-name {
         color: var(--green);
-        font-size: 23px;
-        line-height: 1;
-        font-weight: 600;
+        font-size: clamp(15px, 3.2vw, 23px);
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: .3px;
         white-space: nowrap;
-        letter-spacing: 0.2px;
     }
 
     /* =========================
-       CONTENT AREA
+       SKY / HEADLINE
        ========================= */
 
-    .content {
-        position: absolute;
-        top: 48mm;
-        left: 15mm;
-        right: 15mm;
-        bottom: 27mm;
-        font-size: 12.5pt;
-        line-height: 1.75;
-        color: var(--ink);
-    }
+    .sky {
+        position: relative;
+        z-index: 10;
 
-    .content[hidden] { display: none; }
+        flex: 1;
 
-    /* =========================
-       UNDER CONSTRUCTION
-       ========================= */
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
 
-    .uc {
-        font-family: Arial, Helvetica, sans-serif;
+        padding: 0 20px 168px;
         text-align: center;
     }
 
-    .uc[hidden] { display: none; }
-
-    .uc-stripes {
-        height: 12px;
-        border-radius: 3px;
-        background: repeating-linear-gradient(
-            135deg,
-            var(--green) 0 14px,
-            var(--blue) 14px 28px
-        );
-        opacity: .9;
+    h1 {
+        color: var(--deep);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(34px, 6.2vw, 68px);
+        line-height: .98;
+        letter-spacing: -2.5px;
     }
 
-    .uc-body { padding: 26px 8px 0; }
-
-    .uc-icon {
-        width: 74px;
-        height: 74px;
-        margin: 0 auto 18px;
+    .highlight {
         color: var(--green);
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background: #f2f8ec;
-        box-shadow: 0 0 0 10px #f8fbf5;
-        animation: uc-bob 3.2s ease-in-out infinite;
     }
 
-    @keyframes uc-bob {
-        0%, 100% { transform: translateY(0) rotate(-3deg); }
-        50%      { transform: translateY(-6px) rotate(3deg); }
+    /* =========================
+       SEA
+       ========================= */
+
+    .sea {
+        position: relative;
+
+        flex: 0 0 auto;
+
+        height: 300px;
+
+        background:
+            linear-gradient(
+                to bottom,
+                #62b9d5,
+                #2589b0
+            );
     }
 
-    .uc-eyebrow {
-        margin: 0 0 10px;
-        font-size: 10pt;
-        font-weight: 700;
-        letter-spacing: 2.4px;
-        text-transform: uppercase;
-        color: var(--blue);
+    .wave {
+        position: absolute;
+        top: -25px;
+        left: -5%;
+
+        width: 110%;
+        height: 55px;
+
+        background: #62b9d5;
+
+        border-radius: 50% 50% 0 0;
+
+        animation: wave 5s ease-in-out infinite;
     }
 
-    .uc-title {
-        margin: 0 0 12px;
-        font-size: 21pt;
-        line-height: 1.3;
-        font-weight: 700;
-        color: var(--ink);
+    .wave-2 {
+        top: -15px;
+        opacity: .55;
+        animation-duration: 7s;
+        animation-delay: -2s;
     }
 
-    .uc-copy {
-        margin: 0 auto 26px;
-        max-width: 108mm;
-        font-size: 11.5pt;
+    .wave-3 {
+        top: -5px;
+        opacity: .35;
+        animation-duration: 9s;
+        animation-delay: -4s;
+    }
+
+    @keyframes wave {
+        0%, 100% { transform: translateX(-2%) rotate(0deg); }
+        50%      { transform: translateX(2%)  rotate(.5deg); }
+    }
+
+    /* =========================
+       BELOW WATERLINE TEXT
+       ========================= */
+
+    .below {
+        position: absolute;
+        z-index: 20;
+
+        left: 0;
+        right: 0;
+        bottom: 30px;
+
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .description {
+        margin: 0 auto;
+        max-width: 560px;
+
+        color: rgba(255,255,255,.93);
+        font-size: 16px;
         line-height: 1.7;
-        color: var(--muted);
+        text-shadow: 0 1px 3px rgba(0,0,0,.18);
     }
 
-    .uc-bar {
-        max-width: 108mm;
-        height: 10px;
-        margin: 0 auto 12px;
-        border-radius: 99px;
-        background: var(--line);
-        overflow: hidden;
-    }
+    .cta {
+        margin-top: 18px;
 
-    .uc-bar span {
-        display: block;
-        height: 100%;
-        width: 34%;
-        border-radius: 99px;
-        background: linear-gradient(90deg, var(--green), var(--blue));
-        animation: uc-fill 2.8s ease-in-out infinite;
-    }
-
-    @keyframes uc-fill {
-        0%   { width: 8%;  margin-left: 0; }
-        55%  { width: 74%; }
-        100% { width: 8%;  margin-left: 92%; }
-    }
-
-    .uc-bar-label {
-        margin: 0 0 24px;
-        font-size: 9.5pt;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: var(--muted);
-    }
-
-    .uc-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-        margin-bottom: 26px;
-    }
-
-    .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 6px 13px;
-        border: 1px solid var(--line);
-        border-radius: 99px;
-        font-size: 9.5pt;
-        font-weight: 700;
-        color: var(--ink);
-        background: #fff;
-    }
-
-    .dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--green);
-        animation: uc-pulse 1.6s ease-in-out infinite;
-    }
-
-    @keyframes uc-pulse {
-        0%, 100% { opacity: 1;   transform: scale(1); }
-        50%      { opacity: .35; transform: scale(.8); }
-    }
-
-    .uc-count {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        margin-bottom: 26px;
-    }
-
-    .uc-count[hidden] { display: none; }
-
-    .uc-count div {
-        min-width: 66px;
-        padding: 10px 6px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #fff;
-    }
-
-    .uc-count b {
-        display: block;
-        font-size: 17pt;
-        line-height: 1.1;
-        color: var(--blue);
-    }
-
-    .uc-count span {
-        font-size: 8pt;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: var(--muted);
-    }
-
-    .uc-cta {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
@@ -257,248 +259,357 @@
     .btn {
         display: inline-block;
         padding: 11px 22px;
-        border-radius: 6px;
-        border: 1px solid var(--blue);
-        font-size: 10pt;
+        border: 2px solid #fff;
+        border-radius: 999px;
+
+        background: transparent;
+        color: #fff;
+
+        font-size: 13px;
         font-weight: 700;
         text-decoration: none;
-        color: var(--blue);
-        background: #fff;
+
         transition: background .15s, color .15s;
     }
 
-    .btn-primary { background: var(--blue); color: #fff; }
-    .btn:hover   { background: var(--blue); color: #fff; }
-    .btn-primary:hover { background: #005a99; border-color: #005a99; }
+    .btn-primary {
+        background: #fff;
+        color: #16719d;
+    }
 
-    .uc-note {
-        margin: 24px 0 0;
-        font-size: 9.5pt;
-        color: var(--muted);
+    .btn:hover {
+        background: #fff;
+        color: #0d5a7e;
     }
 
     /* =========================
-       FOOTER
+       SHIP
        ========================= */
 
-    .footer {
+    .ship-wrapper {
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 9mm;
-        color: var(--blue);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 8.7pt;
-        font-weight: 700;
-        text-align: center;
-        line-height: 1.45;
-        padding-top: 2.2mm;
+
+        left: 50%;
+        top: -120px;
+
+        width: 300px;
+        height: 130px;
+
+        transform: translateX(-50%);
+
+        animation: shipFloat 4s ease-in-out infinite;
     }
 
-    .footer::before {
+    @keyframes shipFloat {
+        0%, 100% {
+            transform: translateX(-50%) translateY(0)   rotate(-1deg);
+        }
+        50% {
+            transform: translateX(-50%) translateY(-8px) rotate(1deg);
+        }
+    }
+
+    .ship {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+
+        width: 260px;
+        height: 55px;
+    }
+
+    .hull {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 260px;
+        height: 50px;
+
+        background: #173e52;
+
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            85% 75%,
+            72% 100%,
+            18% 100%,
+            5% 70%
+        );
+
+        border-bottom: 6px solid #0f2e3e;
+    }
+
+    .hull-line {
+        position: absolute;
+        left: 25px;
+        top: 17px;
+
+        width: 205px;
+        height: 4px;
+
+        background: #62b9d5;
+    }
+
+    .deck {
+        position: absolute;
+        bottom: 47px;
+        left: 72px;
+
+        width: 115px;
+        height: 35px;
+
+        background: #fff;
+
+        border: 3px solid #173e52;
+        border-bottom: 0;
+    }
+
+    .deck::before {
         content: "";
         position: absolute;
+        left: 12px;
+        top: 8px;
+
+        width: 91px;
+        height: 7px;
+
+        background: #dceff6;
+    }
+
+    .bridge {
+        position: absolute;
+        bottom: 82px;
+        left: 130px;
+
+        width: 65px;
+        height: 34px;
+
+        background: #f5f5f0;
+
+        border: 3px solid #173e52;
+    }
+
+    .bridge-window {
+        position: absolute;
+        left: 8px;
+        top: 8px;
+
+        width: 49px;
+        height: 12px;
+
+        background: #65b5d1;
+
+        border: 2px solid #173e52;
+    }
+
+    .mast {
+        position: absolute;
+        bottom: 82px;
+        left: 105px;
+
+        width: 4px;
+        height: 65px;
+
+        background: #173e52;
+    }
+
+    .flag {
+        position: absolute;
         top: 0;
-        left: 0;
-        right: 0;
-        border-top: 0.35mm solid var(--blue-lt);
+        left: 4px;
+
+        width: 32px;
+        height: 19px;
+
+        background: var(--green);
+
+        clip-path: polygon(0 0, 100% 25%, 0 55%);
+
+        animation: flagWave .8s ease-in-out infinite alternate;
     }
 
-    .footer a { color: var(--blue); text-decoration: underline; }
+    @keyframes flagWave {
+        from { transform: skewY(0deg); }
+        to   { transform: skewY(-5deg); }
+    }
+
+    .smoke {
+        position: absolute;
+        left: 65px;
+        bottom: 105px;
+
+        width: 12px;
+        height: 12px;
+
+        background: rgba(255,255,255,.65);
+        border-radius: 50%;
+
+        animation: smoke 3s ease-out infinite;
+    }
+
+    .smoke:nth-child(2) { animation-delay: 1s; }
+    .smoke:nth-child(3) { animation-delay: 2s; }
+
+    @keyframes smoke {
+        0%   { transform: translate(0, 0) scale(.5); opacity: 0; }
+        20%  { opacity: .8; }
+        100% { transform: translate(-30px, -80px) scale(2); opacity: 0; }
+    }
+
+    .wake {
+        position: absolute;
+        left: -35px;
+        bottom: 2px;
+
+        width: 70px;
+        height: 10px;
+
+        border-top: 3px solid rgba(255,255,255,.75);
+        border-radius: 50%;
+
+        animation: wake 2s ease-in-out infinite;
+    }
+
+    @keyframes wake {
+        0%, 100% { width: 65px;  opacity: .4; }
+        50%      { width: 100px; opacity: .9; }
+    }
 
     /* =========================
-       VIEW SWITCH (screen only)
+       MOBILE
        ========================= */
 
-    .switch {
-        position: fixed;
-        right: 16px;
-        bottom: 16px;
-        z-index: 9;
-        display: flex;
-        gap: 4px;
-        padding: 4px;
-        border-radius: 99px;
-        background: #17222b;
-        box-shadow: 0 4px 16px rgba(0,0,0,.28);
-        font: 700 11px/1 Arial, Helvetica, sans-serif;
-    }
+    @media (max-width: 600px) {
 
-    .switch button {
-        border: 0;
-        cursor: pointer;
-        padding: 8px 14px;
-        border-radius: 99px;
-        background: transparent;
-        color: #9fb0bd;
-        font: inherit;
-    }
+        .brand {
+            padding: 20px 16px 0;
+        }
 
-    .switch button[aria-pressed="true"] { background: var(--green); color: #fff; }
+        .logo {
+            width: 92px;
+            height: 74px;
+        }
+
+        .sky {
+            padding-bottom: 150px;
+        }
+
+        h1 {
+            letter-spacing: -1.6px;
+        }
+
+        .description {
+            font-size: 14px;
+        }
+
+        .sea {
+            height: 290px;
+        }
+
+        .below {
+            bottom: 26px;
+        }
+
+        .ship-wrapper {
+            transform: translateX(-50%) scale(.75);
+        }
+
+        @keyframes shipFloat {
+            0%, 100% {
+                transform: translateX(-50%) scale(.75) translateY(0)   rotate(-1deg);
+            }
+            50% {
+                transform: translateX(-50%) scale(.75) translateY(-8px) rotate(1deg);
+            }
+        }
+    }
 
     /* =========================
-       PRINT
+       REDUCED MOTION
        ========================= */
-
-    @media print {
-        html, body { background: #fff; }
-        .page { margin: 0; box-shadow: none; }
-        .switch { display: none; }
-    }
-
-    @media screen {
-        .page { box-shadow: 0 2px 15px rgba(0,0,0,.12); }
-    }
 
     @media (prefers-reduced-motion: reduce) {
-        .uc-icon, .uc-bar span, .dot { animation: none; }
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+        }
     }
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<section class="construction-page">
 
-    <header class="header">
-        <img class="logo" src="Jayanth-logo.jpeg" alt="Jayanth Sai Marine Services Logo">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
 
-        <div class="company-name">
-            JAYANTH SAI MARINE SERVICES
-        </div>
+    <!-- Logo + company name -->
+    <header class="brand">
+        <img class="logo" src="Jayanth-logo.png" alt="Jayanth Sai Marine Services Logo">
+        <div class="brand-name">Jayanth Sai Marine Services</div>
     </header>
 
-    <!-- ============ LETTER (print-ready) ============ -->
-    <main class="content" id="letter">
-        <p>Date: ____________</p>
+    <!-- Bold headline, above the ship -->
+    <div class="sky">
+        <h1>
+            We're setting<br>
+            <span class="highlight">sail soon.</span>
+        </h1>
+    </div>
 
-        <p>
-            To,<br>
-            ____________________________
-        </p>
+    <div class="sea">
 
-        <p><strong>Subject: ____________________________</strong></p>
+        <div class="wave"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
 
-        <p>Dear Sir/Madam,</p>
+        <div class="ship-wrapper">
+            <div class="ship">
 
-        <p>Your letter content goes here&hellip;</p>
+                <div class="smoke"></div>
+                <div class="smoke"></div>
+                <div class="smoke"></div>
 
-        <p style="margin-top:14mm">Yours faithfully,<br>
-            For <strong>Jayanth Sai Marine Services</strong>
-        </p>
-    </main>
+                <div class="mast">
+                    <div class="flag"></div>
+                </div>
 
-    <!-- ============ UNDER CONSTRUCTION ============ -->
-    <main class="content uc" id="construction" hidden>
+                <div class="deck"></div>
 
-        <div class="uc-stripes"></div>
+                <div class="bridge">
+                    <div class="bridge-window"></div>
+                </div>
 
-        <div class="uc-body">
+                <div class="hull">
+                    <div class="hull-line"></div>
+                </div>
 
-            <div class="uc-icon">
-                <svg width="42" height="32" viewBox="0 0 64 48" fill="none"
-                     stroke="currentColor" stroke-width="3.2"
-                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M11 39a21 21 0 0 1 42 0"/>
-                    <path d="M3 39h58a3 3 0 0 1 3 3v4H0v-4a3 3 0 0 1 3-3z"/>
-                    <path d="M32 18V9"/>
-                    <path d="M25 39V28a7 7 0 0 1 14 0v11"/>
-                </svg>
+                <div class="wake"></div>
+
             </div>
+        </div>
 
-            <p class="uc-eyebrow">Site Status</p>
-
-            <h1 class="uc-title">We&rsquo;re building something better.</h1>
-
-            <p class="uc-copy">
-                Our new website is under construction. Our marine services, spares and
-                technical support continue to run as usual &mdash; reach us any time.
+        <!-- Text below the waterline -->
+        <div class="below">
+            <p class="description">
+                Our website is currently being prepared. We're working behind the scenes
+                to bring Jayanth Sai Marine Services online.
             </p>
 
-            <div class="uc-bar"><span></span></div>
-            <p class="uc-bar-label">Work in progress</p>
-
-            <div class="uc-meta">
-                <span class="chip"><i class="dot"></i> Launching soon</span>
-                <span class="chip">Mobile: +91 95733 74799</span>
-                <span class="chip">Kakinada, Andhra Pradesh</span>
-            </div>
-
-            <!-- Set data-launch to any future date/time to show the countdown.
-                 Example: data-launch="2026-12-31T00:00:00"  |  Leave empty to hide. -->
-            <div class="uc-count" id="ucCount" data-launch="" hidden>
-                <div><b data-d>0</b><span>Days</span></div>
-                <div><b data-h>00</b><span>Hours</span></div>
-                <div><b data-m>00</b><span>Minutes</span></div>
-                <div><b data-s>00</b><span>Seconds</span></div>
-            </div>
-
-            <div class="uc-cta">
+            <div class="cta">
                 <a class="btn btn-primary" href="tel:+919573374799">Call +91 95733 74799</a>
-                <a class="btn" href="mailto:jayanthsaimarineservices@gmail.com">Email Us</a>
-                <a class="btn" href="http://www.jayanthsai.com">Visit Website</a>
+                <a class="btn" href="mailto:dhana@jayanthsai.com">Email Us</a>
             </div>
-
-            <p class="uc-note">Thank you for your patience.</p>
         </div>
-    </main>
 
-    <footer class="footer">
-        <div>
-            D No: 70-15-13/1, Ground Floor, Opp KUDA Office Road,NFCL Road, Govindaraju street-2
-            &nbsp;&nbsp; Kakinada -533 003. (Andhra Pradesh)
-        </div>
-        <div>
-            Mobile Num: +91 9573374799, Website:
-            <a href="http://www.jayanthsai.com">http://www.jayanthsai.com</a>,
-            E Mail ID:-
-            <a href="mailto:jayanthsaimarineservices@gmail.com">jayanthsaimarineservices@gmail.com</a>
-        </div>
-    </footer>
+    </div>
 
-</div>
-
-<div class="switch">
-    <button type="button" data-view="letter" aria-pressed="true">Letterhead</button>
-    <button type="button" data-view="construction" aria-pressed="false">Under Construction</button>
-</div>
-
-<script>
-    (function () {
-        var letter = document.getElementById('letter');
-        var construction = document.getElementById('construction');
-
-        Array.prototype.forEach.call(document.querySelectorAll('.switch button'), function (btn) {
-            btn.addEventListener('click', function () {
-                var isUc = btn.dataset.view === 'construction';
-                letter.hidden = isUc;
-                construction.hidden = !isUc;
-                Array.prototype.forEach.call(document.querySelectorAll('.switch button'), function (b) {
-                    b.setAttribute('aria-pressed', String(b === btn));
-                });
-            });
-        });
-
-        var box = document.getElementById('ucCount');
-        var end = new Date(box.dataset.launch || '').getTime();
-        if (!end || isNaN(end)) return;
-
-        var slots = { d: box.querySelector('[data-d]'), h: box.querySelector('[data-h]'),
-                      m: box.querySelector('[data-m]'), s: box.querySelector('[data-s]') };
-
-        (function tick() {
-            var left = Math.max(0, Math.floor((end - Date.now()) / 1000));
-            var d = Math.floor(left / 86400); left %= 86400;
-            slots.d.textContent = d;
-            slots.h.textContent = String(Math.floor(left / 3600)).padStart(2, '0');
-            slots.m.textContent = String(Math.floor(left / 60) % 60).padStart(2, '0');
-            slots.s.textContent = String(left % 60).padStart(2, '0');
-            setTimeout(tick, 1000);
-        })();
-
-        box.hidden = false;
-    })();
-</script>
+</section>
 
 </body>
 </html>
