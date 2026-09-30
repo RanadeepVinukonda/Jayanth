@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayanth Sai Marine Services</title>
+
+<style>
+    :root {
+        --green: #82c341;
+        --blue: #0071bc;
+        --blue-lt: #65a9d6;
+        --ink: #17222b;
+        --muted: #5d6b76;
+        --line: #e3e8ec;
+    }
+
+    @page { size: A4; margin: 0; }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; background: #e9e9e9; }
+
+    body { font-family: "Times New Roman", Times, serif; }
+
+    .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 20px auto;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .header {
+        position: absolute;
+        top: 9mm;
+        left: 15mm;
+        right: 15mm;
+        height: 31mm;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 34mm;
+        height: 28mm;
+        object-fit: contain;
+        flex: 0 0 34mm;
+    }
+
+    .company-name {
+        margin-left: 1.5mm;
+        margin-top: -1mm;
+        color: var(--green);
+        font-size: 23px;
+        line-height: 1;
+        font-weight: 600;
+        white-space: nowrap;
+        letter-spacing: 0.2px;
+    }
+
+    /* =========================
+       CONTENT AREA
+       ========================= */
+
+    .content {
+        position: absolute;
+        top: 48mm;
+        left: 15mm;
+        right: 15mm;
+        bottom: 27mm;
+        font-size: 12.5pt;
+        line-height: 1.75;
+        color: var(--ink);
+    }
+
+    .content[hidden] { display: none; }
+
+    /* =========================
+       UNDER CONSTRUCTION
+       ========================= */
+
+    .uc {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    .uc[hidden] { display: none; }
+
+    .uc-stripes {
+        height: 12px;
+        border-radius: 3px;
+        background: repeating-linear-gradient(
+            135deg,
+            var(--green) 0 14px,
+            var(--blue) 14px 28px
+        );
+        opacity: .9;
+    }
+
+    .uc-body { padding: 26px 8px 0; }
+
+    .uc-icon {
+        width: 74px;
+        height: 74px;
+        margin: 0 auto 18px;
+        color: var(--green);
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #f2f8ec;
+        box-shadow: 0 0 0 10px #f8fbf5;
+        animation: uc-bob 3.2s ease-in-out infinite;
+    }
+
+    @keyframes uc-bob {
+        0%, 100% { transform: translateY(0) rotate(-3deg); }
+        50%      { transform: translateY(-6px) rotate(3deg); }
+    }
+
+    .uc-eyebrow {
+        margin: 0 0 10px;
+        font-size: 10pt;
+        font-weight: 700;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: var(--blue);
+    }
+
+    .uc-title {
+        margin: 0 0 12px;
+        font-size: 21pt;
+        line-height: 1.3;
+        font-weight: 700;
+        color: var(--ink);
+    }
+
+    .uc-copy {
+        margin: 0 auto 26px;
+        max-width: 108mm;
+        font-size: 11.5pt;
+        line-height: 1.7;
+        color: var(--muted);
+    }
+
+    .uc-bar {
+        max-width: 108mm;
+        height: 10px;
+        margin: 0 auto 12px;
+        border-radius: 99px;
+        background: var(--line);
+        overflow: hidden;
+    }
+
+    .uc-bar span {
+        display: block;
+        height: 100%;
+        width: 34%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, var(--green), var(--blue));
+        animation: uc-fill 2.8s ease-in-out infinite;
+    }
+
+    @keyframes uc-fill {
+        0%   { width: 8%;  margin-left: 0; }
+        55%  { width: 74%; }
+        100% { width: 8%;  margin-left: 92%; }
+    }
+
+    .uc-bar-label {
+        margin: 0 0 24px;
+        font-size: 9.5pt;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .uc-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 26px;
+    }
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 13px;
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        font-size: 9.5pt;
+        font-weight: 700;
+        color: var(--ink);
+        background: #fff;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: uc-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes uc-pulse {
+        0%, 100% { opacity: 1;   transform: scale(1); }
+        50%      { opacity: .35; transform: scale(.8); }
+    }
+
+    .uc-count {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 26px;
+    }
+
+    .uc-count[hidden] { display: none; }
+
+    .uc-count div {
+        min-width: 66px;
+        padding: 10px 6px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .uc-count b {
+        display: block;
+        font-size: 17pt;
+        line-height: 1.1;
+        color: var(--blue);
+    }
+
+    .uc-count span {
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .uc-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 11px 22px;
+        border-radius: 6px;
+        border: 1px solid var(--blue);
+        font-size: 10pt;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--blue);
+        background: #fff;
+        transition: background .15s, color .15s;
+    }
+
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn:hover   { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: #005a99; border-color: #005a99; }
+
+    .uc-note {
+        margin: 24px 0 0;
+        font-size: 9.5pt;
+        color: var(--muted);
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    .footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 9mm;
+        color: var(--blue);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 8.7pt;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.45;
+        padding-top: 2.2mm;
+    }
+
+    .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top: 0.35mm solid var(--blue-lt);
+    }
+
+    .footer a { color: var(--blue); text-decoration: underline; }
+
+    /* =========================
+       VIEW SWITCH (screen only)
+       ========================= */
+
+    .switch {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 9;
+        display: flex;
+        gap: 4px;
+        padding: 4px;
+        border-radius: 99px;
+        background: #17222b;
+        box-shadow: 0 4px 16px rgba(0,0,0,.28);
+        font: 700 11px/1 Arial, Helvetica, sans-serif;
+    }
+
+    .switch button {
+        border: 0;
+        cursor: pointer;
+        padding: 8px 14px;
+        border-radius: 99px;
+        background: transparent;
+        color: #9fb0bd;
+        font: inherit;
+    }
+
+    .switch button[aria-pressed="true"] { background: var(--green); color: #fff; }
+
+    /* =========================
+       PRINT
+       ========================= */
+
+    @media print {
+        html, body { background: #fff; }
+        .page { margin: 0; box-shadow: none; }
+        .switch { display: none; }
+    }
+
+    @media screen {
+        .page { box-shadow: 0 2px 15px rgba(0,0,0,.12); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .uc-icon, .uc-bar span, .dot { animation: none; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <img class="logo" src="Jayanth-logo.jpeg" alt="Jayanth Sai Marine Services Logo">
+
+        <div class="company-name">
+            JAYANTH SAI MARINE SERVICES
+        </div>
+    </header>
+
+    <!-- ============ LETTER (print-ready) ============ -->
+    <main class="content" id="letter">
+        <p>Date: ____________</p>
+
+        <p>
+            To,<br>
+            ____________________________
+        </p>
+
+        <p><strong>Subject: ____________________________</strong></p>
+
+        <p>Dear Sir/Madam,</p>
+
+        <p>Your letter content goes here&hellip;</p>
+
+        <p style="margin-top:14mm">Yours faithfully,<br>
+            For <strong>Jayanth Sai Marine Services</strong>
+        </p>
+    </main>
+
+    <!-- ============ UNDER CONSTRUCTION ============ -->
+    <main class="content uc" id="construction" hidden>
+
+        <div class="uc-stripes"></div>
+
+        <div class="uc-body">
+
+            <div class="uc-icon">
+                <svg width="42" height="32" viewBox="0 0 64 48" fill="none"
+                     stroke="currentColor" stroke-width="3.2"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 39a21 21 0 0 1 42 0"/>
+                    <path d="M3 39h58a3 3 0 0 1 3 3v4H0v-4a3 3 0 0 1 3-3z"/>
+                    <path d="M32 18V9"/>
+                    <path d="M25 39V28a7 7 0 0 1 14 0v11"/>
+                </svg>
+            </div>
+
+            <p class="uc-eyebrow">Site Status</p>
+
+            <h1 class="uc-title">We&rsquo;re building something better.</h1>
+
+            <p class="uc-copy">
+                Our new website is under construction. Our marine services, spares and
+                technical support continue to run as usual &mdash; reach us any time.
+            </p>
+
+            <div class="uc-bar"><span></span></div>
+            <p class="uc-bar-label">Work in progress</p>
+
+            <div class="uc-meta">
+                <span class="chip"><i class="dot"></i> Launching soon</span>
+                <span class="chip">Mobile: +91 95733 74799</span>
+                <span class="chip">Kakinada, Andhra Pradesh</span>
+            </div>
+
+            <!-- Set data-launch to any future date/time to show the countdown.
+                 Example: data-launch="2026-12-31T00:00:00"  |  Leave empty to hide. -->
+            <div class="uc-count" id="ucCount" data-launch="" hidden>
+                <div><b data-d>0</b><span>Days</span></div>
+                <div><b data-h>00</b><span>Hours</span></div>
+                <div><b data-m>00</b><span>Minutes</span></div>
+                <div><b data-s>00</b><span>Seconds</span></div>
+            </div>
+
+            <div class="uc-cta">
+                <a class="btn btn-primary" href="tel:+919573374799">Call +91 95733 74799</a>
+                <a class="btn" href="mailto:jayanthsaimarineservices@gmail.com">Email Us</a>
+                <a class="btn" href="http://www.jayanthsai.com">Visit Website</a>
+            </div>
+
+            <p class="uc-note">Thank you for your patience.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div>
+            D No: 70-15-13/1, Ground Floor, Opp KUDA Office Road,NFCL Road, Govindaraju street-2
+            &nbsp;&nbsp; Kakinada -533 003. (Andhra Pradesh)
+        </div>
+        <div>
+            Mobile Num: +91 9573374799, Website:
+            <a href="http://www.jayanthsai.com">http://www.jayanthsai.com</a>,
+            E Mail ID:-
+            <a href="mailto:jayanthsaimarineservices@gmail.com">jayanthsaimarineservices@gmail.com</a>
+        </div>
+    </footer>
+
+</div>
+
+<div class="switch">
+    <button type="button" data-view="letter" aria-pressed="true">Letterhead</button>
+    <button type="button" data-view="construction" aria-pressed="false">Under Construction</button>
+</div>
+
+<script>
+    (function () {
+        var letter = document.getElementById('letter');
+        var construction = document.getElementById('construction');
+
+        Array.prototype.forEach.call(document.querySelectorAll('.switch button'), function (btn) {
+            btn.addEventListener('click', function () {
+                var isUc = btn.dataset.view === 'construction';
+                letter.hidden = isUc;
+                construction.hidden = !isUc;
+                Array.prototype.forEach.call(document.querySelectorAll('.switch button'), function (b) {
+                    b.setAttribute('aria-pressed', String(b === btn));
+                });
+            });
+        });
+
+        var box = document.getElementById('ucCount');
+        var end = new Date(box.dataset.launch || '').getTime();
+        if (!end || isNaN(end)) return;
+
+        var slots = { d: box.querySelector('[data-d]'), h: box.querySelector('[data-h]'),
+                      m: box.querySelector('[data-m]'), s: box.querySelector('[data-s]') };
+
+        (function tick() {
+            var left = Math.max(0, Math.floor((end - Date.now()) / 1000));
+            var d = Math.floor(left / 86400); left %= 86400;
+            slots.d.textContent = d;
+            slots.h.textContent = String(Math.floor(left / 3600)).padStart(2, '0');
+            slots.m.textContent = String(Math.floor(left / 60) % 60).padStart(2, '0');
+            slots.s.textContent = String(left % 60).padStart(2, '0');
+            setTimeout(tick, 1000);
+        })();
+
+        box.hidden = false;
+    })();
+</script>
+
+</body>
+</html>
